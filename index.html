@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بن جمال | القمة في عالم الجوالات</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #231E5F;
+            --orange: #DF8B27;
+            --soft-white: #f8f9fa;
+            --purple-accent: #5d53c0; 
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * { box-sizing: border-box; transition: var(--transition); }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--soft-white);
+            color: var(--navy);
+            font-family: 'Almarai', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #3a338f 0%, var(--navy) 70%);
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: var(--orange);
+            filter: blur(150px);
+            opacity: 0.3;
+            z-index: 0;
+            animation: pulseGlow 10s infinite alternate;
+        }
+
+        @keyframes pulseGlow { from { transform: scale(1); } to { transform: scale(1.4); } }
+
+        header h1 { font-family: 'Cairo', sans-serif; font-size: clamp(3rem, 10vw, 5rem); margin: 0; z-index: 1; }
+        header p { font-size: 1.8rem; opacity: 0.9; z-index: 1; border-top: 2px solid var(--orange); padding-top: 10px; margin-top: 10px; }
+
+        .stats {
+            display: flex; justify-content: center; gap: 30px; margin-top: -100px; flex-wrap: wrap; padding: 20px; z-index: 10; position: relative;
+        }
+
+        .stat-card {
+            background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center; min-width: 250px; border-bottom: 5px solid var(--orange);
+        }
+
+        .stat-card h2 { color: var(--orange); font-size: 3.5rem; margin: 0; font-family: 'Cairo'; }
+
+        .about-detailed { padding: 150px 5%; max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 80px; align-items: center; }
+
+        .service-tag { display: inline-block; background: rgba(223, 139, 39, 0.1); color: var(--orange); padding: 10px 25px; border-radius: 50px; margin: 8px; font-weight: bold; }
+
+        .phone-section { background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%); padding: 150px 5%; }
+        
+        .phone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1400px; margin: auto; }
+
+        .phone-card { background: white; border-radius: 40px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee; text-align: center; }
+
+        .phone-card img { width: 100%; height: 280px; object-fit: contain; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.1)); }
+
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(10px); }
+        .modal.open { display: flex; }
+
+        .modal-content {
+            background: white; padding: 40px; border-radius: 40px; width: 90%; max-width: 650px; max-height: 90vh; overflow-y: auto; border: 3px solid var(--purple-accent); position: relative;
+        }
+
+        .check-purple {
+            background: var(--purple-accent); color: white; width: 25px; height: 25px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 0.8rem; margin-left: 10px;
+        }
+
+        .social-footer { display: flex; justify-content: center; gap: 30px; margin: 30px 0; }
+        .social-footer a { font-size: 2.5rem; color: var(--purple-accent); transition: 0.3s; }
+        .social-footer a:hover { color: var(--orange); transform: scale(1.2); }
+
+        footer { background: white; padding: 100px 20px; text-align: center; border-top: 1px solid #eee; }
+
+        .whatsapp-link { background: #25D366; color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; display: inline-block; }
+
+        /* تعديلات أزرار اكتشف القوة (Hover & Active) */
+        .btn-animate {
+            background-color: var(--navy);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition); /* تأكيد النعومة وعدم التعليق */
+        }
+
+        /* عند تمرير الماوس (Hover) */
+        .btn-animate:hover {
+            background-color: var(--orange);
+            transform: scale(1.08); /* تكبير الحجم */
+            box-shadow: 0 10px 25px rgba(223, 139, 39, 0.3);
+        }
+
+        /* عند الضغط (Active) */
+        .btn-animate:active {
+            transform: scale(0.95); /* تأثير الضغطة الحقيقي */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-glow"></div>
+        <div class="brand-box reveal">
+            <h1>بـن جمـال</h1> </div>
+        <p class="reveal">رائد عالم الجوالات والابتكار منذ 2007</p>
+    </header>
+
+    <section class="stats reveal">
+        <div class="stat-card"><h2>19</h2><p>عاماً من الخبرة</p></div>
+        <div class="stat-card"><h2>ثقة</h2><p>مئات العملاء يثقون بنا</p></div> <div class="stat-card"><h2>100%</h2><p>ضمان وجودة</p></div>
+    </section>
+
+    <section class="about-detailed reveal">
+        <div class="about-text">
+            <h2>لماذا بن جمال؟</h2>
+            <p>نحن لا نبيع الجوالات فحسب، نحن نبني جسوراً من الثقة. ندمج بين الخبرة العريقة وبين أحدث صيحات الأجهزة العالمية لنقدم لك تجربة فريدة.</p>
+            <div class="tags-container">
+                <span class="service-tag">بيع أحدث الأجهزة</span>
+                <span class="service-tag">نظام استبدال مرن</span>
+                <span class="service-tag">صيانة فورية معتمدة</span>
+                <span class="service-tag">هدايا قيمة مع كل شراء</span> </div>
+        </div>
+        <div style="text-align: center;">
+            <img src="logo.png" alt="شعار بن جمال" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; border-radius: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+        </div>
+    </section>
+
+    <section class="phone-section">
+        <div class="section-title reveal">
+            <h2>إصدارات النخبة 2026</h2>
+            <p>نخبة التكنولوجيا العالمية بين يديك الآن</p>
+        </div>
+        <div class="phone-grid" id="phoneGrid"></div>
+    </section>
+
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal" style="cursor:pointer; float:left; font-size:2rem; color: #888;">×</span>
+            <div class="modal-body">
+                <h2 id="modalTitle" style="color:var(--navy); font-family:'Cairo'; border-bottom:2px solid var(--purple-accent); padding-bottom:10px;"></h2>
+                <div id="longDescription" style="background:#f0f0f5; padding:15px; border-radius:15px; margin:20px 0; font-size:0.9rem; text-align:right;">
+                    هذا الجهاز يمثل ذروة هندسة الاتصالات لعام 2026، حيث تم تزويده بأحدث الرقائق المعالجة عالمياً لضمان أداء لا يضاهى في المهام الشاقة والألعاب الاحترافية. يتميز بنظام تصوير سينمائي متطور وتقنيات ذكاء اصطناعي تقوم بتحليل الضوء والألوان في أجزاء من الثانية لتعطيك النتيجة المثالية دائماً.
+                </div>
+                <ul id="modalSpecs" style="text-align:right; list-style:none; padding:0;"></ul>
+                <a href="https://wa.me/967770000000" class="btn-action whatsapp-link" style="text-decoration: none; display: block; text-align: center; width: 100%; margin-top:25px;" target="_blank">إتمام الطلب عبر واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo reveal">بـن جمـال</div>
+        <div class="slogan reveal">خُــذ لفــه وأنـت مرتــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
+        
+        <div class="social-footer reveal">
+            <a href="https://instagram.com/bingamalphone" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/bingamalphone" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/967770000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <a href="https://wa.me/967770000000" class="whatsapp-link" target="_blank">💬 اطلب الآن عبر الواتساب</a>
+        
+        <div class="location-info reveal" style="margin-top:30px;">
+            <i class="fas fa-map-marker-alt" style="color: var(--orange);"></i> 
+            اليمن - عدن - خور مكسر - سوق القات - مقابل كلية الآداب
+        </div>
+        <p style="margin-top: 50px; color: #bbb; font-size: 0.9rem;">بن جمال لبيع واستبدال الجوالات - جميع الحقوق محفوظة 2026</p> </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+
+        const phonesData = [
+            { name: "iPhone 17 Pro Max", img: "1.png", specs: ["معالج A19 Pro بتقنية 2 نانو", "شاشة XDR بدقة متناهية", "كاميرا احترافية بدقة 100MP"] },
+            { name: "Galaxy S26 Ultra", img: "2.png", specs: ["شاشة Dynamic AMOLED 2X", "قلم S-Pen فائق الحساسية", "ذكاء اصطناعي متكامل"] },
+            { name: "Xiaomi 16 Ultra", img: "3.png", specs: ["شحن خارق بقوة 200 واط", "عدسات Leica الاحترافية", "تبريد مائي داخلي للألعاب"] },
+            { name: "Pixel 10 Pro", img: "4.png", specs: ["أذكى نظام أندرويد", "معالج Tensor G6", "تصوير بذكاء اصطناعي"] },
+            { name: "OnePlus 14 Pro", img: "5.png", specs: ["سرعة خرافية", "نظام OxygenOS المستقر", "شحن كامل في 10 دقائق"] },
+            { name: "Nothing Phone (4)", img: "6.png", specs: ["تصميم شفاف", "واجهة Glyph التفاعلية", "أداء متوازن"] },
+            { name: "ROG Phone 10", img: "7.png", specs: ["ملك الألعاب الأول", "نظام تبريد نشط", "أزرار جانبية"] },
+            { name: "Honor Magic 7 Pro", img: "8.png", specs: ["أقوى تقنية تقريب", "حماية متقدمة للعين", "بطارية سيليكون"] },
+            { name: "Huawei Pura 70", img: "9.png", specs: ["ثورة في عالم التصوير", "زجاج Kunlun المقاوم", "سرعة اتصال فائقة"] },
+            { name: "Sony Xperia 1 VII", img: "10.png", specs: ["شاشة 4K سينمائية", "تتبع تلقائي للعين", "صوت عالي الدقة"] },
+            { name: "Xiaomi Mix Fold 5", img: "11.png", specs: ["شاشة مطوية عملاقة", "أنحف هاتف مطوي", "تعدد مهام احترافي"] },
+            { name: "Galaxy Z Fold 7", img: "12.png", specs: ["سينما متنقلة", "دعم قلم S-Pen", "مقاومة كاملة للماء"] },
+            { name: "Oppo Find X8", img: "13.png", specs: ["كاميرا بيريسكوب", "شحن آمن وفائق", "تصميم مريح"] },
+            { name: "Redmi Note 14 Pro", img: "14.png", specs: ["أفضل قيمة مقابل السعر", "شاشة AMOLED", "كاميرا 200 ميجا"] },
+            { name: "Motorola Edge 60", img: "15.png", specs: ["تجربة أندرويد خام", "نحافة مذهلة", "سرعة استجابة فائقة"] }
+        ];
+
+        const grid = document.getElementById('phoneGrid');
+        phonesData.forEach((phone, index) => {
+            grid.innerHTML += `
+                <div class="phone-card reveal">
+                    <img src="${phone.img}" alt="${phone.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Phone+Image'">
+                    <h3>${phone.name}</h3>
+                    <button class="btn-action open-modal-btn btn-animate" data-phone="${index}" style="width:100%; padding:15px; border-radius:15px;">اكتشف القوة</button>
+                </div>
+            `;
+        });
+
+        const modal = document.getElementById('phoneModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSpecs = document.getElementById('modalSpecs');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        document.querySelectorAll('.open-modal-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const phoneIndex = btn.getAttribute('data-phone');
+                const phone = phonesData[phoneIndex];
+                modalTitle.textContent = phone.name;
+                modalSpecs.innerHTML = '';
+                phone.specs.forEach(spec => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span class="check-purple"><i class="fas fa-check"></i></span> ${spec}`;
+                    li.style.padding = "12px";
+                    li.style.borderBottom = "1px solid #eee";
+                    modalSpecs.appendChild(li);
+                });
+                modal.classList.add('open');
+            });
+        });
+
+        closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
+        window.onclick = e => { if (e.target === modal) modal.classList.remove('open'); };
+    </script>
+</body>
+</html>
