@@ -2,13 +2,23 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>بن جمال | القمة في عالم الجوالات</title>
     <link rel="icon" type="image/png" href="logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* إضافة قفل الشاشة لمنع التحرك يميناً ويساراً */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            position: relative;
+        }
+
         :root {
             --navy: #231E5F;
             --orange: #DF8B27;
@@ -17,15 +27,19 @@
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        * { box-sizing: border-box; transition: var(--transition); }
+        /* تعديل الـ box-sizing لضمان عدم خروج العناصر عن الحواف */
+        * { 
+            box-sizing: border-box; 
+            transition: var(--transition); 
+            -webkit-tap-highlight-color: transparent;
+        }
+        
         html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--soft-white);
             color: var(--navy);
             font-family: 'Almarai', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -44,6 +58,7 @@
             text-align: center;
             position: relative;
             padding: 20px;
+            width: 100%;
         }
 
         .hero-glow {
@@ -63,6 +78,7 @@
 
         .stats {
             display: flex; justify-content: center; gap: 20px; margin-top: -80px; flex-wrap: wrap; padding: 0 15px; z-index: 10; position: relative;
+            width: 100%;
         }
 
         .stat-card {
@@ -73,23 +89,23 @@
         .stat-card h2 { color: var(--orange); font-size: 2.2rem; margin: 0; font-family: 'Cairo'; }
         .stat-card p { font-size: 0.9rem; margin: 5px 0 0; }
 
-        .about-detailed { padding: 80px 5%; max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        .about-detailed { padding: 80px 5%; max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; width: 100%; }
 
         .service-tag { display: inline-block; background: rgba(223, 139, 39, 0.1); color: var(--orange); padding: 8px 18px; border-radius: 50px; margin: 5px; font-weight: bold; font-size: 0.85rem; }
 
-        .phone-section { background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%); padding: 80px 15px; text-align: center; }
+        .phone-section { background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%); padding: 80px 15px; text-align: center; width: 100%; }
         
         .section-title h2 { font-size: 2.5rem; font-family: 'Cairo'; margin-bottom: 10px; }
 
         .phone-grid { 
             display: grid; 
-            grid-template-columns: repeat(2, 1fr); /* تجعلها 2 في كل صف على الجوال */
+            grid-template-columns: repeat(2, 1fr); 
             gap: 15px; 
             max-width: 1400px; 
             margin: 40px auto; 
+            width: 100%;
         }
 
-        /* للشاشات الكبيرة */
         @media (min-width: 768px) {
             .phone-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
             .stats { gap: 30px; margin-top: -100px; }
@@ -107,6 +123,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow: hidden;
         }
 
         .phone-card img { 
@@ -139,7 +156,7 @@
         .social-footer a { font-size: 2rem; color: var(--purple-accent); transition: 0.3s; }
         .social-footer a:hover { color: var(--orange); transform: scale(1.2); }
 
-        footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; }
+        footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; width: 100%; }
 
         .whatsapp-link { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; }
 
@@ -218,7 +235,7 @@
 
     <footer>
         <div class="footer-logo reveal" style="font-size: 2rem; font-weight: 800; color: var(--navy);">بـن جمـال</div>
-        <div class="slogan reveal">خُذ قطعتك وأنت مرتاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
+        <div class="slogan reveal">خُـــذ لفــــة وأنــت مرتــــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
         
         <div class="social-footer reveal">
             <a href="https://instagram.com/bingamalphone" target="_blank"><i class="fab fa-instagram"></i></a>
