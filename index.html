@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>بن جمال | القمة في عالم الجوالات</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="description" content="الموقع الرسمي لـ بن جمال لبيع واستبدال أحدث الجوالات في اليمن - عدن. نوفر أحدث إصدارات آيفون، سامسونج، وشاومي بضمان وجودة 2026.">
+    <meta name="keywords" content="بن جمال، بن جمال للجوالات، عدن جوالات، استبدال جوالات عدن، iPhone 17 Pro Max عدن، بن جمال خور مكسر">
+    <link rel="canonical" href="https://bingamal.netlify.app/"> <link rel="icon" type="image/png" href="logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* إضافة قفل الشاشة لمنع التحرك يميناً ويساراً */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -24,10 +26,10 @@
             --orange: #DF8B27;
             --soft-white: #f8f9fa;
             --purple-accent: #5d53c0; 
+            --purple-pale: #e0dcfc; /* لون بنفسجي باهت للتحميل */
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* تعديل الـ box-sizing لضمان عدم خروج العناصر عن الحواف */
         * { 
             box-sizing: border-box; 
             transition: var(--transition); 
@@ -41,6 +43,20 @@
             color: var(--navy);
             font-family: 'Almarai', sans-serif;
             line-height: 1.6;
+        }
+
+        /* ميزة التحميل الذكي بنفسجي باهت */
+        .skeleton-loader {
+            background-color: var(--purple-pale);
+            background-image: linear-gradient(90deg, var(--purple-pale) 0px, #efebff 50%, var(--purple-pale) 100%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite linear;
+            border-radius: 20px;
+        }
+
+        @keyframes skeleton-loading {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
         }
 
         .reveal { opacity: 0; transform: translateY(50px); transition: 1s all ease; }
@@ -59,6 +75,14 @@
             position: relative;
             padding: 20px;
             width: 100%;
+        }
+
+        .brand-logo-main {
+            width: 180px;
+            height: auto;
+            margin-bottom: 15px;
+            z-index: 1;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
         }
 
         .hero-glow {
@@ -116,30 +140,31 @@
         .phone-card { 
             background: white; 
             border-radius: 25px; 
-            padding: 15px; 
+            padding: 0; 
             box-shadow: 0 8px 20px rgba(0,0,0,0.05); 
             border: 1px solid #eee; 
             text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            overflow: hidden;
+            overflow: hidden; 
         }
 
         .phone-card img { 
             width: 100%; 
-            height: 180px; 
-            object-fit: contain; 
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); 
-            margin-bottom: 15px;
+            height: auto;
+            aspect-ratio: 1/1; 
+            object-fit: cover; 
+            margin-bottom: 0;
+            display: block;
         }
+
+        .phone-card h3 { font-size: 1rem; margin: 15px 0; padding: 0 10px; }
+        .phone-card .btn-animate { margin: 0 15px 15px 15px; }
 
         @media (min-width: 768px) {
-            .phone-card { padding: 30px; border-radius: 40px; }
-            .phone-card img { height: 280px; }
+            .phone-card { border-radius: 40px; }
         }
-
-        .phone-card h3 { font-size: 1rem; margin: 10px 0; }
 
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(10px); padding: 20px; }
         .modal.open { display: flex; }
@@ -157,6 +182,12 @@
         .social-footer a:hover { color: var(--orange); transform: scale(1.2); }
 
         footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; width: 100%; }
+        
+        .footer-logo-img {
+            width: 150px; 
+            height: auto;
+            margin-bottom: 15px;
+        }
 
         .whatsapp-link { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; }
 
@@ -186,8 +217,10 @@
 
     <header>
         <div class="hero-glow"></div>
+        <img src="logo.png" alt="بن جمال" class="brand-logo-main reveal">
         <div class="brand-box reveal">
-            <h1>بـن جمـال</h1> </div>
+            <h1>بـن جمـال</h1> 
+        </div>
         <p class="reveal">رائد عالم الجوالات والابتكار منذ 2007</p>
     </header>
 
@@ -213,7 +246,7 @@
 
     <section class="phone-section">
         <div class="section-title reveal">
-            <h2>إصدارات النخبة 2026</h2>
+            <h2>دليل  الهواتف الرائدة</h2>
             <p>نخبة التكنولوجيا العالمية بين يديك الآن</p>
         </div>
         <div class="phone-grid" id="phoneGrid"></div>
@@ -225,7 +258,6 @@
             <div class="modal-body">
                 <h2 id="modalTitle" style="color:var(--navy); font-family:'Cairo'; border-bottom:2px solid var(--purple-accent); padding-bottom:10px; font-size: 1.5rem;"></h2>
                 <div id="longDescription" style="background:#f0f0f5; padding:15px; border-radius:15px; margin:20px 0; font-size:0.85rem; text-align:right;">
-                    هذا الجهاز يمثل ذروة هندسة الاتصالات لعام 2026، حيث تم تزويده بأحدث الرقائق المعالجة عالمياً لضمان أداء لا يضاهى في المهام الشاقة والألعاب الاحترافية. يتميز بنظام تصوير سينمائي متطور وتقنيات ذكاء اصطناعي تقوم بتحليل الضوء والألوان في أجزاء من الثانية لتعطيك النتيجة المثالية دائماً.
                 </div>
                 <ul id="modalSpecs" style="text-align:right; list-style:none; padding:0; font-size: 0.9rem;"></ul>
                 <a href="https://wa.me/967774849205" class="btn-action whatsapp-link" style="text-decoration: none; display: block; text-align: center; width: 100%; margin-top:25px;" target="_blank">إتمام الطلب عبر واتساب</a>
@@ -234,8 +266,9 @@
     </div>
 
     <footer>
+        <img src="logo.png" alt="بن جمال" class="footer-logo-img reveal">
         <div class="footer-logo reveal" style="font-size: 2rem; font-weight: 800; color: var(--navy);">بـن جمـال</div>
-        <div class="slogan reveal">خُذ قطعتك وأنت مرتاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
+        <div class="slogan reveal">خُذ قطعتـــك وأنت مرتــــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
         
         <div class="social-footer reveal">
             <a href="https://instagram.com/bingamalphone" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -266,30 +299,34 @@
         window.onload = reveal;
 
         const phonesData = [
-            { name: "iPhone 17 Pro Max", img: "1.png", specs: ["معالج A19 Pro بتقنية 2 نانو", "شاشة XDR بدقة متناهية", "كاميرا احترافية بدقة 100MP"] },
-            { name: "Galaxy S26 Ultra", img: "2.png", specs: ["شاشة Dynamic AMOLED 2X", "قلم S-Pen فائق الحساسية", "ذكاء اصطناعي متكامل"] },
-            { name: "Xiaomi 16 Ultra", img: "3.png", specs: ["شحن خارق بقوة 200 واط", "عدسات Leica الاحترافية", "تبريد مائي داخلي للألعاب"] },
-            { name: "Pixel 10 Pro", img: "4.png", specs: ["أذكى نظام أندرويد", "معالج Tensor G6", "تصوير بذكاء اصطناعي"] },
-            { name: "OnePlus 14 Pro", img: "5.png", specs: ["سرعة خرافية", "نظام OxygenOS المستقر", "شحن كامل في 10 دقائق"] },
-            { name: "Nothing Phone (4)", img: "6.png", specs: ["تصميم شفاف", "واجهة Glyph التفاعلية", "أداء متوازن"] },
-            { name: "ROG Phone 10", img: "7.png", specs: ["ملك الألعاب الأول", "نظام تبريد نشط", "أزرار جانبية"] },
-            { name: "Honor Magic 7 Pro", img: "8.png", specs: ["أقوى تقنية تقريب", "حماية متقدمة للعين", "بطارية سيليكون"] },
-            { name: "Huawei Pura 70", img: "9.png", specs: ["ثورة في عالم التصوير", "زجاج Kunlun المقاوم", "سرعة اتصال فائقة"] },
-            { name: "Sony Xperia 1 VII", img: "10.png", specs: ["شاشة 4K سينمائية", "تتبع تلقائي للعين", "صوت عالي الدقة"] },
-            { name: "Xiaomi Mix Fold 5", img: "11.png", specs: ["شاشة مطوية عملاقة", "أنحف هاتف مطوي", "تعدد مهام احترافي"] },
-            { name: "Galaxy Z Fold 7", img: "12.png", specs: ["سينما متنقلة", "دعم قلم S-Pen", "مقاومة كاملة للماء"] },
-            { name: "Oppo Find X8", img: "13.png", specs: ["كاميرا بيريسكوب", "شحن آمن وفائق", "تصميم مريح"] },
-            { name: "Redmi Note 14 Pro", img: "14.png", specs: ["أفضل قيمة مقابل السعر", "شاشة AMOLED", "كاميرا 200 ميجا"] },
-            { name: "Motorola Edge 60", img: "15.png", specs: ["تجربة أندرويد خام", "نحافة مذهلة", "سرعة استجابة فائقة"] }
+            { name: "iPhone 17 Pro Max", img: "1.png", desc: "الإصدار المنتظر لعام 2026، يمثل قفزة نوعية في تاريخ آيفون مع تقنيات ذكاء اصطناعي غير مسبوقة.", specs: ["معالج A19 Pro القادم", "شاشة XDR مطورة", "كاميرا 100MP فائقة"] },
+            { name: "iPhone 16 Pro Max", img: "2.png", desc: "الأحدث حالياً في الأسواق، يتميز بزر التحكم الجديد بالكاميرا وهيكل تيتانيوم أخف وأقوى.", specs: ["معالج A18 Pro", "زر التحكم بالكاميرا", "أطول عمر بطارية"] },
+            { name: "Samsung S24 Ultra", img: "3.png", desc: "ملك الأندرويد الذي أدخل عصر الذكاء الاصطناعي للهواتف، مع قلم مدمج وشاشة مسطحة مذهلة.", specs: ["Galaxy AI المتكامل", "قلم S-Pen مدمج", "كاميرا بدقة 200MP"] },
+            { name: "iPhone 15 Pro Max", img: "4.png", desc: "أول هاتف من آبل يأتي بمنفذ USB-C وهيكل تيتانيوم، مع أداء جبار في الألعاب الثقيلة.", specs: ["معالج A17 Pro", "هيكل التيتانيوم", "منفذ Type-C"] },
+            { name: "Samsung S23 Ultra", img: "5.png", desc: "الجهاز الذي أثبت جدارته بكاميرا التقريب الخرافية، يعتبر الخيار المثالي لمحبي التصوير الفوتوغرافي.", specs: ["تقريب بصري 100x", "معالج سنابدراجون 8", "شاشة مذهلة"] },
+            { name: "iPhone 13 Pro Max", img: "6.png", desc: "لا يزال من أكثر الأجهزة طلباً بفضل بطاريته الجبارة وشاشته التي تدعم 120 هرتز.", specs: ["شاشة ProMotion", "بطارية تدوم طويلاً", "تصميم كلاسيكي فخم"] },
+            { name: "Xiaomi 14 Ultra", img: "7.png", desc: "وحش التصوير من شاومي بعدسات لايكا الألمانية، يقدم تجربة كاميرا احترافية حقيقية.", specs: ["عدسات Leica", "شحن سريع 90 واط", "تصميم مستوحى من الكاميرات"] },
+            { name: "iPhone 12 Pro Max", img: "8.png", specs: ["أول تصميم مسطح حديث", "دعم 5G", "تصوير HDR Dolby"], desc: "الجهاز الذي أعاد التصميم المربع الأنيق ودعم شبكات الجيل الخامس لأول مرة." },
+            { name: "Samsung Z Fold 6", img: "9.png", desc: "مستقبل الهواتف المطوية، جهاز يتحول من هاتف إلى تابلت بلمحة بصر لإنجاز أعمالك بسهولة.", specs: ["شاشة داخلية ضخمة", "مقاومة الماء والغبار", "نظام تعدد مهام متطور"] },
+            { name: "iPhone 11 Pro Max", img: "10.png", desc: "الجوال الكلاسيكي الذي لا يموت، أول آيفون بنظام الثلاث كاميرات الشهير، خيار ممتاز وعملي.", specs: ["ثلاث كاميرات احترافية", "شاشة OLED ساطعة", "سعر منافس جداً"] },
+            { name: "Honor Magic 6 Pro", img: "11.png", desc: "يتميز بأقوى حماية للشاشة في العالم وبطارية سيليكون تدوم طويلاً حتى في أقسى الظروف.", specs: ["شاشة ضد الكسر", "تصوير رياضي سريع", "بطارية 5600 مللي أمبير"] },
+            { name: "Samsung Z Flip 6", img: "12.png", desc: "الأناقة والتقنية في جيبك، هاتف مطوي جذاب وعملي جداً لمحبي التميز.", specs: ["تصميم مطوي أنيق", "شاشة خارجية مفيدة", "كاميرا 50MP"] },
+            { name: "Redmi Note 13 Pro+", img: "13.png", desc: "أفضل قيمة مقابل سعر، يقدم مواصفات الهواتف الرائدة بسعر متوسط يناسب الجميع.", specs: ["كاميرا 200MP", "شحن خارق 120 واط", "شاشة منحنية 1.5K"] },
+            { name: "HUAWEI Pura 70 Ultra", img: "14.png", desc: "ثورة في عالم العدسات المتحركة، يقدم جودة صور تنافس الكاميرات الاحترافية.", specs: ["عدسة متحركة ميكانيكية", "تصوير ليلي مذهل", "تصميم جلد فخم"] },
+            { name: "Google Pixel 9 Pro", img: "15.png", desc: "أذكى هاتف في العالم بفضل معالجة جوجل المباشرة للذكاء الاصطناعي وتجربة أندرويد الخام.", specs: ["ذكاء اصطناعي Gemini", "أفضل معالجة صور", "نظام أندرويد خام"] }
         ];
 
         const grid = document.getElementById('phoneGrid');
         phonesData.forEach((phone, index) => {
             grid.innerHTML += `
                 <div class="phone-card reveal">
-                    <img src="${phone.img}" alt="${phone.name}" onerror="this.src='https://via.placeholder.com/400x300?text=Phone+Image'">
+                    <div class="skeleton-loader" style="width:100%; aspect-ratio:1/1;">
+                        <img src="${phone.img}" alt="${phone.name}" style="opacity:0; transition: opacity 0.5s;" 
+                             onload="this.style.opacity='1'; this.parentElement.classList.remove('skeleton-loader')"
+                             onerror="this.src='https://via.placeholder.com/400x300?text=Phone+Image'; this.parentElement.classList.remove('skeleton-loader'); this.style.opacity='1'">
+                    </div>
                     <h3>${phone.name}</h3>
-                    <button class="btn-action open-modal-btn btn-animate" data-phone="${index}" style="width:100%; border-radius:15px;">اكتشف</button>
+                    <button class="btn-action open-modal-btn btn-animate" data-phone="${index}" style="border-radius:15px;">اكتشف</button>
                 </div>
             `;
         });
@@ -297,6 +334,7 @@
         const modal = document.getElementById('phoneModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalSpecs = document.getElementById('modalSpecs');
+        const longDescription = document.getElementById('longDescription');
         const closeModalBtn = document.getElementById('closeModal');
 
         document.querySelectorAll('.open-modal-btn').forEach(btn => {
@@ -304,6 +342,7 @@
                 const phoneIndex = btn.getAttribute('data-phone');
                 const phone = phonesData[phoneIndex];
                 modalTitle.textContent = phone.name;
+                longDescription.textContent = phone.desc;
                 modalSpecs.innerHTML = '';
                 phone.specs.forEach(spec => {
                     const li = document.createElement('li');
