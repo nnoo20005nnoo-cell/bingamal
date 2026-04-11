@@ -26,7 +26,7 @@
             --orange: #DF8B27;
             --soft-white: #f8f9fa;
             --purple-accent: #5d53c0; 
-            --purple-pale: #e0dcfc; /* لون بنفسجي باهت للتحميل */
+            --purple-pale: #e0dcfc; 
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -45,7 +45,6 @@
             line-height: 1.6;
         }
 
-        /* ميزة التحميل الذكي بنفسجي باهت */
         .skeleton-loader {
             background-color: var(--purple-pale);
             background-image: linear-gradient(90deg, var(--purple-pale) 0px, #efebff 50%, var(--purple-pale) 100%);
@@ -77,7 +76,6 @@
             width: 100%;
         }
 
-        /* تكبير شعار بن جمال العلوي */
         .brand-logo-main {
             width: 320px; 
             height: auto;
@@ -122,7 +120,6 @@
         
         .section-title h2 { font-size: 2.5rem; font-family: 'Cairo'; margin-bottom: 10px; }
 
-        /* ستايل مساعد الذكاء الاصطناعي */
         .ai-assistant {
             margin: 60px auto;
             max-width: 1000px;
@@ -289,7 +286,6 @@
 
         footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; width: 100%; }
         
-        /* تكبير شعار بن جمال السفلي */
         .footer-logo-img {
             width: 250px; 
             height: auto;
@@ -319,7 +315,6 @@
 
         .location-info { font-size: 0.9rem; padding: 0 10px; }
 
-        /* ستايل زر التحميل */
         .loading-ai { pointer-events: none; opacity: 0.7; }
         .loading-ai::after { content: " ...جاري التحليل"; }
     </style>
@@ -358,7 +353,7 @@
     <section class="ai-assistant reveal">
         <div class="ai-assistant-glow"></div>
         <div class="ai-specialist-flag">محلل تقني متخصص</div>
-        <h3 class="ai-assistant-title">جوال حسب <strong>إمكانياتك</strong> مع بن جمال (β)</h3>
+        <h3 class="ai-assistant-title">جوال حسب <strong>إمكانياتك</strong> مع ذكاء بن جمال (β)</h3>
         <p style="color:var(--navy); text-align:center; font-size:1rem; margin-top:-20px; margin-bottom: 25px;">صِف لنا ما تحتاج وميزانيتك، ودع مساعدنا التقني يجد لك الهاتف المثالي في اليمن.</p>
         <textarea class="ai-assistant-box" id="aiDescription" placeholder="مثلاً: 'جوال آيفون مستخدم نظيف بحدود 400 دولار'، أو 'سامسونج جديد قوي في الألعاب بحدود 300 ألف ريال'.."></textarea>
         <div style="text-align: center;">
@@ -396,7 +391,7 @@
     <footer>
         <img src="logo.png" alt="بن جمال" class="footer-logo-img reveal">
         <div class="footer-logo reveal" style="font-size: 2rem; font-weight: 800; color: var(--navy);">بـن جمـال</div>
-        <div class="slogan reveal">خُــذ قطعتـــك وأنــت مرتـــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
+        <div class="slogan reveal">خُذ قطعتك وأنت مرتاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
         
         <div class="social-footer reveal">
             <a href="https://instagram.com/bingamalphone" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -486,42 +481,27 @@
         closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
         window.onclick = e => { if (e.target === modal) modal.classList.remove('open'); };
 
-        // --- محرك ذكاء جيميني الحقيقي (تحديث بن جمال المباشر) ---
+        // --- تعديل محرك ذكاء بن جمال ليعمل عبر Netlify Functions ---
         const aiBtn = document.getElementById('aiBtn');
         const aiDescription = document.getElementById('aiDescription');
         const aiResults = document.getElementById('aiResults');
         const aiResultsList = document.getElementById('aiResultsList');
-        
-        const API_KEY = "AIzaSyAZzvUhYZdc2pDplTYXDAX7U-jKRH8-5XY";
 
         async function getGeminiResponse(prompt) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            // توجيه الطلب إلى الدالة الآمنة في نيتليفاى
+            const url = `/.netlify/functions/gemini`;
             
-            const systemInstruction = `أنت خبير مبيعات راقٍ ومحترم في محل بن جمال عدن. جاوب بلهجة عدنية مهذبة جداً وبصيغة المفرد (تفضل، يا غالي، حياك الله). لا تبالغ في مواصفات الأجهزة، كن صادقاً وواقعياً. التنسيق HTML:
-            <li><span class="label">الجوال:</span> ...</li>
-            <li><span class="label">ليش؟</span> ...</li>
-            <li><span class="label">السعر:</span> ...</li>
-            <li><span class="label">نصيحة:</span> ...</li>`;
-
             try {
                 const response = await fetch(url, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: systemInstruction + "\n طلب الزبون: " + prompt }] }]
-                    })
+                    body: JSON.stringify({ prompt: prompt })
                 });
                 
                 const data = await response.json();
-
-                if (data.candidates && data.candidates[0].content) {
-                    return data.candidates[0].content.parts[0].text;
-                } else {
-                    return "<li>عذراً، يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة عبر واتساب.</li>";
-                }
+                return data.text;
                 
             } catch (error) {
-                return "<li>حدث خطأ في الشبكة. إذا كنت تشغل الموقع من جهازك، ارفعه على Netlify وسيعمل فوراً!</li>";
+                return "<li>عذراً يا غالي، في مشكلة بالاتصال.. جرب مرة ثانية بعد الرفع على Netlify.</li>";
             }
         }
 
