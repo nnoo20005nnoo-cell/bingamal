@@ -77,8 +77,9 @@
             width: 100%;
         }
 
+        /* تكبير شعار بن جمال العلوي */
         .brand-logo-main {
-            width: 180px;
+            width: 320px; 
             height: auto;
             margin-bottom: 15px;
             z-index: 1;
@@ -120,6 +121,111 @@
         .phone-section { background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%); padding: 80px 15px; text-align: center; width: 100%; }
         
         .section-title h2 { font-size: 2.5rem; font-family: 'Cairo'; margin-bottom: 10px; }
+
+        /* ستايل مساعد الذكاء الاصطناعي */
+        .ai-assistant {
+            margin: 60px auto;
+            max-width: 1000px;
+            padding: 40px 15px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--purple-accent);
+        }
+
+        .ai-assistant-title {
+            color: var(--navy);
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-assistant-title strong { color: var(--purple-accent); }
+
+        .ai-assistant-glow {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: var(--purple-pale);
+            filter: blur(80px);
+            opacity: 0.5;
+            top: -100px; left: -100px;
+            z-index: 0;
+            animation: pulseGlow 15s infinite alternate;
+        }
+
+        .ai-assistant-box {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Almarai', sans-serif;
+            font-size: 1rem;
+            color: var(--navy);
+            resize: none;
+            background: var(--soft-white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-assistant-box:focus {
+            outline: none;
+            border-color: var(--purple-accent);
+            background: white;
+        }
+
+        .ai-assistant-btn {
+            background-color: var(--purple-accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .ai-assistant-btn:hover { background-color: var(--navy); transform: scale(1.05); }
+
+        .ai-assistant-results {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            background: #f0f2f5;
+            border-radius: 20px;
+            border: 1px dashed var(--purple-accent);
+            text-align: right;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-assistant-results.active { display: block; }
+
+        .ai-assistant-results h4 { color: var(--navy); font-size: 1.2rem; margin-bottom: 20px; }
+        .ai-assistant-results ul { list-style: none; padding: 0; font-size: 0.95rem; }
+        .ai-assistant-results li { margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .ai-assistant-results .label { color: var(--purple-accent); font-weight: bold; }
+
+        .ai-specialist-flag {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: var(--orange);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            z-index: 10;
+        }
 
         .phone-grid { 
             display: grid; 
@@ -183,8 +289,9 @@
 
         footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; width: 100%; }
         
+        /* تكبير شعار بن جمال السفلي */
         .footer-logo-img {
-            width: 150px; 
+            width: 250px; 
             height: auto;
             margin-bottom: 15px;
         }
@@ -211,13 +318,17 @@
         .btn-animate:active { transform: scale(0.95); }
 
         .location-info { font-size: 0.9rem; padding: 0 10px; }
+
+        /* ستايل زر التحميل */
+        .loading-ai { pointer-events: none; opacity: 0.7; }
+        .loading-ai::after { content: " ...جاري التحليل"; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="hero-glow"></div>
-        <img src="logo.png" alt="بن جمال" class="brand-logo-main reveal">
+        <img src="logo1.png" alt="بن جمال" class="brand-logo-main reveal">
         <div class="brand-box reveal">
             <h1>بـن جمـال</h1> 
         </div>
@@ -244,9 +355,26 @@
         </div>
     </section>
 
+    <section class="ai-assistant reveal">
+        <div class="ai-assistant-glow"></div>
+        <div class="ai-specialist-flag">محلل تقني متخصص</div>
+        <h3 class="ai-assistant-title">جوال حسب <strong>إمكانياتك</strong> مع بن جمال (β)</h3>
+        <p style="color:var(--navy); text-align:center; font-size:1rem; margin-top:-20px; margin-bottom: 25px;">صِف لنا ما تحتاج وميزانيتك، ودع مساعدنا التقني يجد لك الهاتف المثالي في اليمن.</p>
+        <textarea class="ai-assistant-box" id="aiDescription" placeholder="مثلاً: 'جوال آيفون مستخدم نظيف بحدود 400 دولار'، أو 'سامسونج جديد قوي في الألعاب بحدود 300 ألف ريال'.."></textarea>
+        <div style="text-align: center;">
+            <button class="ai-assistant-btn" id="aiBtn">ابدأ التحليل الذكي</button>
+        </div>
+        
+        <div class="ai-assistant-results" id="aiResults">
+            <h4>💡 مساعد بن جمال التقني يوصي بـ:</h4>
+            <ul id="aiResultsList">
+                </ul>
+        </div>
+    </section>
+
     <section class="phone-section">
         <div class="section-title reveal">
-            <h2>دليل  الهواتف الرائدة</h2>
+            <h2>دليل الجوالات الراقية</h2>
             <p>نخبة التكنولوجيا العالمية بين يديك الآن</p>
         </div>
         <div class="phone-grid" id="phoneGrid"></div>
@@ -268,7 +396,7 @@
     <footer>
         <img src="logo.png" alt="بن جمال" class="footer-logo-img reveal">
         <div class="footer-logo reveal" style="font-size: 2rem; font-weight: 800; color: var(--navy);">بـن جمـال</div>
-        <div class="slogan reveal">خُذ قطعتـــك وأنت مرتــــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
+        <div class="slogan reveal">خُــذ قطعتـــك وأنــت مرتـــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
         
         <div class="social-footer reveal">
             <a href="https://instagram.com/bingamalphone" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -299,21 +427,21 @@
         window.onload = reveal;
 
         const phonesData = [
-            { name: "iPhone 17 Pro Max", img: "1.png", desc: "الإصدار المنتظر لعام 2026، يمثل قفزة نوعية في تاريخ آيفون مع تقنيات ذكاء اصطناعي غير مسبوقة.", specs: ["معالج A19 Pro القادم", "شاشة XDR مطورة", "كاميرا 100MP فائقة"] },
-            { name: "iPhone 16 Pro Max", img: "2.png", desc: "الأحدث حالياً في الأسواق، يتميز بزر التحكم الجديد بالكاميرا وهيكل تيتانيوم أخف وأقوى.", specs: ["معالج A18 Pro", "زر التحكم بالكاميرا", "أطول عمر بطارية"] },
-            { name: "Samsung S24 Ultra", img: "3.png", desc: "ملك الأندرويد الذي أدخل عصر الذكاء الاصطناعي للهواتف، مع قلم مدمج وشاشة مسطحة مذهلة.", specs: ["Galaxy AI المتكامل", "قلم S-Pen مدمج", "كاميرا بدقة 200MP"] },
-            { name: "iPhone 15 Pro Max", img: "4.png", desc: "أول هاتف من آبل يأتي بمنفذ USB-C وهيكل تيتانيوم، مع أداء جبار في الألعاب الثقيلة.", specs: ["معالج A17 Pro", "هيكل التيتانيوم", "منفذ Type-C"] },
-            { name: "Samsung S23 Ultra", img: "5.png", desc: "الجهاز الذي أثبت جدارته بكاميرا التقريب الخرافية، يعتبر الخيار المثالي لمحبي التصوير الفوتوغرافي.", specs: ["تقريب بصري 100x", "معالج سنابدراجون 8", "شاشة مذهلة"] },
-            { name: "iPhone 13 Pro Max", img: "6.png", desc: "لا يزال من أكثر الأجهزة طلباً بفضل بطاريته الجبارة وشاشته التي تدعم 120 هرتز.", specs: ["شاشة ProMotion", "بطارية تدوم طويلاً", "تصميم كلاسيكي فخم"] },
-            { name: "Xiaomi 14 Ultra", img: "7.png", desc: "وحش التصوير من شاومي بعدسات لايكا الألمانية، يقدم تجربة كاميرا احترافية حقيقية.", specs: ["عدسات Leica", "شحن سريع 90 واط", "تصميم مستوحى من الكاميرات"] },
-            { name: "iPhone 12 Pro Max", img: "8.png", specs: ["أول تصميم مسطح حديث", "دعم 5G", "تصوير HDR Dolby"], desc: "الجهاز الذي أعاد التصميم المربع الأنيق ودعم شبكات الجيل الخامس لأول مرة." },
-            { name: "Samsung Z Fold 6", img: "9.png", desc: "مستقبل الهواتف المطوية، جهاز يتحول من هاتف إلى تابلت بلمحة بصر لإنجاز أعمالك بسهولة.", specs: ["شاشة داخلية ضخمة", "مقاومة الماء والغبار", "نظام تعدد مهام متطور"] },
-            { name: "iPhone 11 Pro Max", img: "10.png", desc: "الجوال الكلاسيكي الذي لا يموت، أول آيفون بنظام الثلاث كاميرات الشهير، خيار ممتاز وعملي.", specs: ["ثلاث كاميرات احترافية", "شاشة OLED ساطعة", "سعر منافس جداً"] },
-            { name: "Honor Magic 6 Pro", img: "11.png", desc: "يتميز بأقوى حماية للشاشة في العالم وبطارية سيليكون تدوم طويلاً حتى في أقسى الظروف.", specs: ["شاشة ضد الكسر", "تصوير رياضي سريع", "بطارية 5600 مللي أمبير"] },
-            { name: "Samsung Z Flip 6", img: "12.png", desc: "الأناقة والتقنية في جيبك، هاتف مطوي جذاب وعملي جداً لمحبي التميز.", specs: ["تصميم مطوي أنيق", "شاشة خارجية مفيدة", "كاميرا 50MP"] },
-            { name: "Redmi Note 13 Pro+", img: "13.png", desc: "أفضل قيمة مقابل سعر، يقدم مواصفات الهواتف الرائدة بسعر متوسط يناسب الجميع.", specs: ["كاميرا 200MP", "شحن خارق 120 واط", "شاشة منحنية 1.5K"] },
-            { name: "HUAWEI Pura 70 Ultra", img: "14.png", desc: "ثورة في عالم العدسات المتحركة، يقدم جودة صور تنافس الكاميرات الاحترافية.", specs: ["عدسة متحركة ميكانيكية", "تصوير ليلي مذهل", "تصميم جلد فخم"] },
-            { name: "Google Pixel 9 Pro", img: "15.png", desc: "أذكى هاتف في العالم بفضل معالجة جوجل المباشرة للذكاء الاصطناعي وتجربة أندرويد الخام.", specs: ["ذكاء اصطناعي Gemini", "أفضل معالجة صور", "نظام أندرويد خام"] }
+            { name: "iPhone 17 Pro Max", img: "1.png", desc: "الإصدار الأحدث والأكثر تطوراً لعام 2026، يمثل قمة الابتكار التكنولوجي وتكامل الذكاء الاصطناعي.", specs: ["معالج A19 Pro المتطور", "شاشة XDR فائقة السطوع", "نظام تصوير احترافي فائق"] },
+            { name: "iPhone 16 Pro Max", img: "2.png", desc: "هاتف القوة والاحترافية، يتميز بأداء جبار في التصوير السينمائي وزر التحكم الجديد كلياً.", specs: ["معالج A18 Pro", "زر التحكم بالكاميرا (Camera Control)", "أطول عمر بطارية في فئته"] },
+            { name: "Samsung S24 Ultra", img: "3.png", desc: "ملك الأندرويد بشاشة مسطحة مذهلة وذكاء اصطناعي يغير طريقة استخدامك للهاتف تماماً.", specs: ["معالج Snapdragon 8 Gen 3", "نظام Galaxy AI المتكامل", "كاميرا بدقة 200MP"] },
+            { name: "iPhone 15 Pro Max", img: "4.png", desc: "أول هاتف بهيكل تيتانيوم فاخر ومنفذ Type-C، يجمع بين الخفة والقوة في الأداء.", specs: ["معالج A17 Pro", "هيكل التيتانيوم القوي", "دعم منفذ USB-C السريع"] },
+            { name: "Samsung S23 Ultra", img: "5.png", desc: "الجهاز المثالي لمحبي الإنتاجية والتصوير البعيد بفضل قلم S-Pen وتقنية التقريب الخرافية.", specs: ["تقريب بصري حتى 100x", "قلم S-Pen مدمج", "شاشة مذهلة بدقة QHD+"] },
+            { name: "iPhone 13 Pro Max", img: "6.png", desc: "الهاتف الأكثر اعتمادية ببطارية جبارة وشاشة تدعم سلاسة الحركة الاستثنائية.", specs: ["شاشة ProMotion 120Hz", "بطارية تدوم طويلاً جداً", "أداء قوي في الألعاب"] },
+            { name: "Xiaomi 14 Ultra", img: "7.png", desc: "وحش التصوير من شاومي بعدسات لايكا الألمانية، يقدم تجربة كاميرا احترافية حقيقية.", specs: ["عدسات Leica الاحترافية", "شحن خارق 90 واط", "شاشة AMOLED مذهلة"] },
+            { name: "iPhone 12 Pro Max", img: "8.png", desc: "التصميم المربع الأنيق الذي أعاد الكلاسيكية، مع دعم كامل لشبكات الجيل الخامس وتصوير HDR.", specs: ["دعم شبكات 5G", "تصميم فولاذي فخم", "تصوير فيديو Dolby Vision"] },
+            { name: "Samsung Z Fold 6", img: "9.png", desc: "مستقبل الهواتف المطوية، هاتف يتحول إلى تابلت بلمحة بصر لإنجاز أعمالك ومتابعة محتواك بمتعة.", specs: ["شاشة داخلية ضخمة قابلة للطي", "مقاومة الماء والغبار", "نظام تعدد مهام متطور"] },
+            { name: "iPhone 11 Pro Max", img: "10.png", desc: "الجهاز العملي والمستقر، يتميز بجودة تصوير متوازنة وشاشة OLED رائعة تناسب الاستخدام اليومي المكثف.", specs: ["نظام ثلاث كاميرات بدقة 12MP", "شاشة Super Retina XDR", "معالج A13 Bionic المستقر"] },
+            { name: "Honor Magic 6 Pro", img: "11.png", desc: "يتميز بأقوى حماية للشاشة وبطارية سيليكون كربون تدوم طويلاً حتى في أقسى الظروف.", specs: ["شاشة نانو كريستال ضد الكسر", "بطارية سيليكون 5600mAh", "تصوير رياضي فائق السرعة"] },
+            { name: "Samsung Z Flip 6", img: "12.png", desc: "الأناقة والتقنية في جيبك، هاتف مطوي جذاب وعملي جداً لمحبي التميز والحجم المدمج.", specs: ["تصميم مطوي جذاب ومدمج", "شاشة خارجية تفاعلية", "كاميرا مطورة بدقة 50MP"] },
+            { name: "Redmi Note 13 Pro+", img: "13.png", desc: "أفضل قيمة مقابل سعر، يقدم مواصفات الهواتف الرائدة مثل الشحن الخارق والكاميرا القوية.", specs: ["كاميرا بدقة 200MP", "شحن خارق 120 واط", "مقاومة الماء والغبار IP68"] },
+            { name: "HUAWEI Pura 70 Ultra", img: "14.png", desc: "ثورة في عالم الكاميرات مع عدسة متحركة ميكانيكية تقدم جودة صور تنافس الكاميرات الاحترافية.", specs: ["عدسة متحركة (Pop-out)", "تصوير ليلي مذهل", "تصميم خلفي من الجلد الفاخر"] },
+            { name: "Google Pixel 9 Pro", img: "15.png", desc: "أذكى هاتف في العالم بفضل معالجة جوجل المباشرة للذكاء الاصطناعي وتجربة أندرويد الخام.", specs: ["ذكاء اصطناعي Gemini مدمج", "أفضل معالجة صور في العالم", "تجربة أندرويد خام وسلسة"] }
         ];
 
         const grid = document.getElementById('phoneGrid');
@@ -357,6 +485,60 @@
 
         closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
         window.onclick = e => { if (e.target === modal) modal.classList.remove('open'); };
+
+        // --- محرك ذكاء جيميني الحقيقي (تحديث بن جمال المباشر) ---
+        const aiBtn = document.getElementById('aiBtn');
+        const aiDescription = document.getElementById('aiDescription');
+        const aiResults = document.getElementById('aiResults');
+        const aiResultsList = document.getElementById('aiResultsList');
+        
+        const API_KEY = "AIzaSyAZzvUhYZdc2pDplTYXDAX7U-jKRH8-5XY";
+
+        async function getGeminiResponse(prompt) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            
+            const systemInstruction = `أنت خبير مبيعات راقٍ ومحترم في محل بن جمال عدن. جاوب بلهجة عدنية مهذبة جداً وبصيغة المفرد (تفضل، يا غالي، حياك الله). لا تبالغ في مواصفات الأجهزة، كن صادقاً وواقعياً. التنسيق HTML:
+            <li><span class="label">الجوال:</span> ...</li>
+            <li><span class="label">ليش؟</span> ...</li>
+            <li><span class="label">السعر:</span> ...</li>
+            <li><span class="label">نصيحة:</span> ...</li>`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: systemInstruction + "\n طلب الزبون: " + prompt }] }]
+                    })
+                });
+                
+                const data = await response.json();
+
+                if (data.candidates && data.candidates[0].content) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    return "<li>عذراً، يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة عبر واتساب.</li>";
+                }
+                
+            } catch (error) {
+                return "<li>حدث خطأ في الشبكة. إذا كنت تشغل الموقع من جهازك، ارفعه على Netlify وسيعمل فوراً!</li>";
+            }
+        }
+
+        aiBtn.addEventListener('click', async () => {
+            const description = aiDescription.value.trim();
+            if (!description) return alert("فضلاً اكتب طلبك هنا لنتمكن من مساعدتك!");
+
+            aiBtn.classList.add('loading-ai');
+            aiResults.classList.add('active');
+            aiResultsList.innerHTML = "<li>لحظات من فضلك.. بنشوف لك أحسن عرض</li>";
+
+            const aiResponse = await getGeminiResponse(description);
+            aiResultsList.innerHTML = aiResponse;
+            aiBtn.classList.remove('loading-ai');
+
+            window.scrollTo({ top: aiResults.offsetTop - 100, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
