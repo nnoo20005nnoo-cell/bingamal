@@ -481,14 +481,14 @@
         closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
         window.onclick = e => { if (e.target === modal) modal.classList.remove('open'); };
 
-        // --- تعديل محرك ذكاء بن جمال ليعمل عبر Netlify Functions ---
+        // --- محرك ذكاء بن جمال الآمن والنظيف ---
         const aiBtn = document.getElementById('aiBtn');
         const aiDescription = document.getElementById('aiDescription');
         const aiResults = document.getElementById('aiResults');
         const aiResultsList = document.getElementById('aiResultsList');
 
         async function getGeminiResponse(prompt) {
-            // توجيه الطلب إلى الدالة الآمنة في نيتليفاى
+            // توجيه الطلب إلى الدالة الآمنة في نيتليفاى (المفتاح مخفي هناك)
             const url = `/.netlify/functions/gemini`;
             
             try {
@@ -501,7 +501,7 @@
                 return data.text;
                 
             } catch (error) {
-                return "<li>عذراً يا غالي، في مشكلة بالاتصال.. جرب مرة ثانية بعد الرفع على Netlify.</li>";
+                return "<li>عذراً يا غالي، في مشكلة تقنية بسيطة.. جرب مرة ثانية.</li>";
             }
         }
 
@@ -511,7 +511,7 @@
 
             aiBtn.classList.add('loading-ai');
             aiResults.classList.add('active');
-            aiResultsList.innerHTML = "<li>لحظات من فضلك.. بنشوف لك أحسن عرض</li>";
+            aiResultsList.innerHTML = "<li>لحظات يا غالي.. بنشوف لك أحسن العروض..</li>";
 
             const aiResponse = await getGeminiResponse(description);
             aiResultsList.innerHTML = aiResponse;
