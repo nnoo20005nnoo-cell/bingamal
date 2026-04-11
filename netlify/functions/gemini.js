@@ -1,4 +1,5 @@
 exports.handler = async (event) => {
+    // التأكد أن الطلب POST
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
@@ -8,30 +9,45 @@ exports.handler = async (event) => {
         const API_KEY = process.env.GEMINI_API_KEY; 
 
         if (!API_KEY) {
-            return { statusCode: 500, body: JSON.stringify({ text: "خطأ: المفتاح غير موجود." }) };
+            return { 
+                statusCode: 500, 
+                body: JSON.stringify({ text: "<li>يا غالي المفتاح مش موجود في الإعدادات</li>" }) 
+            };
         }
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        // استخدمنا fetch المدمجة عشان ما يطلع خطأ node-fetch
+        // هنا نستخدم fetch المدمجة (بدون require)
         const response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ parts: [{ text: "أنت خبير مبيعات في محل 'بن جمال عدن' للجوالات. جاوب بلهجة عدنية محببة، راقية، ومختصرة. استخدم عبارات مثل (حياك يا غالي، تفضل، من عيوني). التنسيق يجب أن يكون HTML بسيط بداخل وسوم <li>: " + prompt }] }]
+                contents: [{ 
+                    parts: [{ 
+                        text: "أنت خبير مبيعات في محل 'بن جمال عدن' للجوالات. جاوب بلهجة عدنية محببة وراقية. التنسيق HTML بسيط بداخل وسوم <li>: " + prompt 
+                    }] 
+                }]
             })
         });
 
         const data = await response.json();
         
         if (data.candidates && data.candidates[0]) {
-            const text = data.candidates[0].content.parts[0].text;
-            return { statusCode: 200, body: JSON.stringify({ text: text }) };
+            const aiText = data.candidates[0].content.parts[0].text;
+            return {
+                statusCode: 200,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: aiText })
+            };
         } else {
-            throw new Error("Invalid response");
+            return { statusCode: 500, body: JSON.stringify({ text: "<li>لم ينجح استخراج الرد من جوجل</li>" }) };
         }
 
     } catch (error) {
-        return { statusCode: 500, body: JSON.stringify({ text: "<li>يا غالي، في مشكلة تقنية بسيطة.. جرب مرة ثانية</li>" }) };
+        console.error("Error:", error);
+        return { 
+            statusCode: 500, 
+            body: JSON.stringify({ text: "<li>يا غالي في مشكلة تقنية بالمطبخ.. تأكد من الكود</li>" }) 
+        };
     }
 };
