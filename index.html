@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>بن جمال | القمة في عالم الجوالات</title>
-    <meta name="description" content="الموقع الرسمي لـ بن جمال لبيع واستبدال أحدث الجوالات في اليمن - عدن. نوفر أحدث إصدارات آيفون، سامسونج، وشاومي بضمان وجودة 2026.">
-    <meta name="keywords" content="بن جمال، بن جمال للجوالات، عدن جوالات، استبدال جوالات عدن، iPhone 17 Pro Max عدن، بن جمال خور مكسر">
-    <link rel="canonical" href="https://bingamal.netlify.app/"> <link rel="icon" type="image/png" href="logo.png">
+    <!-- وسوم السيو للظهور في محرك بحث جوجل بقوة -->
+    <title>بن جمال للجوالات | عدن خورمكسر - بيع واستبدال أحدث الأجهزة</title>
+    <meta name="description" content="الموقع الرسمي لـ بن جمال لبيع واستبدال أحدث الجوالات في اليمن - عدن خور مكسر سوق القات مقابل كلية الآداب. آيفون، سامسونج، وشاومي بضمان وجودة عالية.">
+    <meta name="keywords" content="بن جمال, بن جمال عدن, بن جمال للجوالات, جوالات عدن, استبدال جوالات عدن, خور مكسر, كلية الآداب عدن, آيفون عدن">
+    <meta name="author" content="بن جمال للجوالات">
+    <meta name="robots" content="index, follow">
+
+    <!-- وسوم المشاركة لـ WhatsApp و Facebook -->
+    <meta property="og:title" content="بن جمال للجوالات | عدن خورمكسر">
+    <meta property="og:description" content="رائد عالم الجوالات والابتكار في عدن. خُذ قطعتك وأنت مرتاح مع ضمان 100%.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="https://bingamal.netlify.app/">
+    <link rel="icon" type="image/png" href="logo.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         html, body {
             max-width: 100%;
@@ -120,110 +132,6 @@
         
         .section-title h2 { font-size: 2.5rem; font-family: 'Cairo'; margin-bottom: 10px; }
 
-        .ai-assistant {
-            margin: 60px auto;
-            max-width: 1000px;
-            padding: 40px 15px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--purple-accent);
-        }
-
-        .ai-assistant-title {
-            color: var(--navy);
-            font-family: 'Cairo', sans-serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-assistant-title strong { color: var(--purple-accent); }
-
-        .ai-assistant-glow {
-            position: absolute;
-            width: 300px; height: 300px;
-            background: var(--purple-pale);
-            filter: blur(80px);
-            opacity: 0.5;
-            top: -100px; left: -100px;
-            z-index: 0;
-            animation: pulseGlow 15s infinite alternate;
-        }
-
-        .ai-assistant-box {
-            width: 100%;
-            height: 200px;
-            border: 2px solid #ddd;
-            border-radius: 20px;
-            padding: 20px;
-            font-family: 'Almarai', sans-serif;
-            font-size: 1rem;
-            color: var(--navy);
-            resize: none;
-            background: var(--soft-white);
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-assistant-box:focus {
-            outline: none;
-            border-color: var(--purple-accent);
-            background: white;
-        }
-
-        .ai-assistant-btn {
-            background-color: var(--purple-accent);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-            margin-top: 20px;
-            display: inline-block;
-        }
-
-        .ai-assistant-btn:hover { background-color: var(--navy); transform: scale(1.05); }
-
-        .ai-assistant-results {
-            display: none;
-            margin-top: 40px;
-            padding: 30px;
-            background: #f0f2f5;
-            border-radius: 20px;
-            border: 1px dashed var(--purple-accent);
-            text-align: right;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-assistant-results.active { display: block; }
-
-        .ai-assistant-results h4 { color: var(--navy); font-size: 1.2rem; margin-bottom: 20px; }
-        .ai-assistant-results ul { list-style: none; padding: 0; font-size: 0.95rem; }
-        .ai-assistant-results li { margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .ai-assistant-results .label { color: var(--purple-accent); font-weight: bold; }
-
-        .ai-specialist-flag {
-            position: absolute;
-            top: 20px; right: 20px;
-            background: var(--orange);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            z-index: 10;
-        }
-
         .phone-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -263,11 +171,6 @@
         }
 
         .phone-card h3 { font-size: 1rem; margin: 15px 0; padding: 0 10px; }
-        .phone-card .btn-animate { margin: 0 15px 15px 15px; }
-
-        @media (min-width: 768px) {
-            .phone-card { border-radius: 40px; }
-        }
 
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 2000; display: none; justify-content: center; align-items: center; backdrop-filter: blur(10px); padding: 20px; }
         .modal.open { display: flex; }
@@ -286,11 +189,7 @@
 
         footer { background: white; padding: 60px 15px; text-align: center; border-top: 1px solid #eee; width: 100%; }
         
-        .footer-logo-img {
-            width: 250px; 
-            height: auto;
-            margin-bottom: 15px;
-        }
+        .footer-logo-img { width: 250px; height: auto; margin-bottom: 15px; }
 
         .whatsapp-link { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; }
 
@@ -311,66 +210,46 @@
             box-shadow: 0 8px 20px rgba(223, 139, 39, 0.3);
         }
 
-        .btn-animate:active { transform: scale(0.95); }
-
-        .location-info { font-size: 0.9rem; padding: 0 10px; }
-
-        .loading-ai { pointer-events: none; opacity: 0.7; }
-        .loading-ai::after { content: " ...جاري التحليل"; }
+        .location-info { font-size: 1rem; font-weight: bold; padding: 15px; background: #f0f2f5; border-radius: 15px; margin: 20px auto; max-width: 600px; border: 1px dashed var(--orange); }
     </style>
 </head>
 <body>
 
     <header>
         <div class="hero-glow"></div>
-        <img src="logo1.png" alt="بن جمال" class="brand-logo-main reveal">
+        <img src="logo1.png" alt="بن جمال للجوالات عدن" class="brand-logo-main reveal">
         <div class="brand-box reveal">
             <h1>بـن جمـال</h1> 
         </div>
-        <p class="reveal">رائد عالم الجوالات والابتكار منذ 2007</p>
+        <p class="reveal">رائد عالم الجوالات والابتكار منذ 2007 - عدن</p>
     </header>
 
     <section class="stats reveal">
         <div class="stat-card"><h2>19</h2><p>عاماً من الخبرة</p></div>
-        <div class="stat-card"><h2>ثقة</h2><p>مئات العملاء يثقون بنا</p></div> <div class="stat-card"><h2>100%</h2><p>ضمان وجودة</p></div>
+        <div class="stat-card"><h2>ثقة</h2><p>مئات العملاء يثقون بنا</p></div> 
+        <div class="stat-card"><h2>100%</h2><p>ضمان وجودة</p></div>
     </section>
 
     <section class="about-detailed reveal">
         <div class="about-text">
             <h2>لماذا بن جمال؟</h2>
-            <p>نحن لا نبيع الجوالات فحسب، نحن نبني جسوراً من الثقة. ندمج بين الخبرة العريقة وبين أحدث صيحات الأجهزة العالمية لنقدم لك تجربة فريدة.</p>
+            <p>نحن لا نبيع الجوالات فحسب، نحن نبني جسوراً من الثقة. ندمج بين الخبرة العريقة وبين أحدث صيحات الأجهزة العالمية لنقدم لك تجربة فريدة في عدن.</p>
             <div class="tags-container">
                 <span class="service-tag">بيع أحدث الأجهزة</span>
                 <span class="service-tag">نظام استبدال مرن</span>
                 <span class="service-tag">صيانة فورية معتمدة</span>
-                <span class="service-tag">هدايا قيمة مع كل شراء</span> </div>
+                <span class="service-tag">هدايا قيمة مع كل شراء</span> 
+            </div>
         </div>
         <div style="text-align: center;">
-            <img src="logo.png" alt="شعار بن جمال" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-        </div>
-    </section>
-
-    <section class="ai-assistant reveal">
-        <div class="ai-assistant-glow"></div>
-        <div class="ai-specialist-flag">محلل تقني متخصص</div>
-        <h3 class="ai-assistant-title">جوال حسب <strong>إمكانياتك</strong> مع بن جمال (β)</h3>
-        <p style="color:var(--navy); text-align:center; font-size:1rem; margin-top:-20px; margin-bottom: 25px;">صِف لنا ما تحتاج وميزانيتك، ودع مساعدنا التقني يجد لك الهاتف المثالي في اليمن.</p>
-        <textarea class="ai-assistant-box" id="aiDescription" placeholder="مثلاً: 'جوال آيفون مستخدم نظيف بحدود 400 دولار'، أو 'سامسونج جديد قوي في الألعاب بحدود 300 ألف ريال'.."></textarea>
-        <div style="text-align: center;">
-            <button class="ai-assistant-btn" id="aiBtn">ابدأ التحليل الذكي</button>
-        </div>
-        
-        <div class="ai-assistant-results" id="aiResults">
-            <h4>💡 مساعد بن جمال التقني يوصي بـ:</h4>
-            <ul id="aiResultsList">
-                </ul>
+            <img src="logo.png" alt="شعار بن جمال عدن" style="width: 100%; height: auto; max-height: 350px; object-fit: contain; border-radius: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
         </div>
     </section>
 
     <section class="phone-section">
         <div class="section-title reveal">
             <h2>دليل الجوالات الراقية</h2>
-            <p>نخبة التكنولوجيا العالمية بين يديك الآن</p>
+            <p>نخبة التكنولوجيا العالمية بين يديك الآن في عدن</p>
         </div>
         <div class="phone-grid" id="phoneGrid"></div>
     </section>
@@ -380,16 +259,15 @@
             <span class="close-modal" id="closeModal" style="cursor:pointer; float:left; font-size:2rem; color: #888;">×</span>
             <div class="modal-body">
                 <h2 id="modalTitle" style="color:var(--navy); font-family:'Cairo'; border-bottom:2px solid var(--purple-accent); padding-bottom:10px; font-size: 1.5rem;"></h2>
-                <div id="longDescription" style="background:#f0f0f5; padding:15px; border-radius:15px; margin:20px 0; font-size:0.85rem; text-align:right;">
-                </div>
+                <div id="longDescription" style="background:#f0f0f5; padding:15px; border-radius:15px; margin:20px 0; font-size:0.85rem; text-align:right;"></div>
                 <ul id="modalSpecs" style="text-align:right; list-style:none; padding:0; font-size: 0.9rem;"></ul>
-                <a href="https://wa.me/967774849205" class="btn-action whatsapp-link" style="text-decoration: none; display: block; text-align: center; width: 100%; margin-top:25px;" target="_blank">إتمام الطلب عبر واتساب</a>
+                <a href="https://wa.me/967774849205" class="btn-action whatsapp-link" style="text-decoration: none; display: block; text-align: center; width: 100%; margin-top:25px;" target="_blank">إتمام الطلب عبر واتساب بن جمال</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <img src="logo.png" alt="بن جمال" class="footer-logo-img reveal">
+        <img src="logo.png" alt="بن جمال عدن" class="footer-logo-img reveal">
         <div class="footer-logo reveal" style="font-size: 2rem; font-weight: 800; color: var(--navy);">بـن جمـال</div>
         <div class="slogan reveal">خُــذ قطعتـــك وأنــت مرتـــاح <span class="check-purple"><i class="fas fa-check"></i></span></div> 
         
@@ -399,13 +277,15 @@
             <a href="https://wa.me/967774849205" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
 
-        <a href="https://wa.me/967774849205" class="whatsapp-link" target="_blank">💬 اطلب الآن عبر الواتساب</a>
+        <a href="https://wa.me/967774849205" class="whatsapp-link" target="_blank">💬 تواصل معنا مباشر عبر الواتساب</a>
         
-        <div class="location-info reveal" style="margin-top:30px;">
+        <!-- موقع المحل الدقيق لخرائط جوجل ومحركات البحث -->
+        <div class="location-info reveal">
             <i class="fas fa-map-marker-alt" style="color: var(--orange);"></i> 
-            اليمن - عدن - خور مكسر - سوق القات - مقابل كلية الآداب
+            <strong>العنوان:</strong> اليمن - عدن - خور مكسر - سوق القات - مقابل كلية الآداب
         </div>
-        <p style="margin-top: 40px; color: #bbb; font-size: 0.8rem;">بن جمال لبيع واستبدال الجوالات - جميع الحقوق محفوظة 2026</p> </footer>
+        <p style="margin-top: 40px; color: #bbb; font-size: 0.8rem;">بن جمال لبيع واستبدال الجوالات - عدن - جميع الحقوق محفوظة 2026</p> 
+    </footer>
 
     <script>
         function reveal() {
@@ -423,20 +303,11 @@
 
         const phonesData = [
             { name: "iPhone 17 Pro Max", img: "1.png", desc: "الإصدار الأحدث والأكثر تطوراً لعام 2026، يمثل قمة الابتكار التكنولوجي وتكامل الذكاء الاصطناعي.", specs: ["معالج A19 Pro المتطور", "شاشة XDR فائقة السطوع", "نظام تصوير احترافي فائق"] },
-            { name: "iPhone 16 Pro Max", img: "2.png", desc: "هاتف القوة والاحترافية، يتميز بأداء جبار في التصوير السينمائي وزر التحكم الجديد كلياً.", specs: ["معالج A18 Pro", "زر التحكم بالكاميرا (Camera Control)", "أطول عمر بطارية في فئته"] },
+            { name: "iPhone 16 Pro Max", img: "2.png", desc: "هاتف القوة والاحترافية، يتميز بأداء جبار في التصوير السينمائي وزر التحكم الجديد كلياً.", specs: ["معالج A18 Pro", "زر التحكم بالكاميرا", "أطول عمر بطارية في فئته"] },
             { name: "Samsung S24 Ultra", img: "3.png", desc: "ملك الأندرويد بشاشة مسطحة مذهلة وذكاء اصطناعي يغير طريقة استخدامك للهاتف تماماً.", specs: ["معالج Snapdragon 8 Gen 3", "نظام Galaxy AI المتكامل", "كاميرا بدقة 200MP"] },
             { name: "iPhone 15 Pro Max", img: "4.png", desc: "أول هاتف بهيكل تيتانيوم فاخر ومنفذ Type-C، يجمع بين الخفة والقوة في الأداء.", specs: ["معالج A17 Pro", "هيكل التيتانيوم القوي", "دعم منفذ USB-C السريع"] },
             { name: "Samsung S23 Ultra", img: "5.png", desc: "الجهاز المثالي لمحبي الإنتاجية والتصوير البعيد بفضل قلم S-Pen وتقنية التقريب الخرافية.", specs: ["تقريب بصري حتى 100x", "قلم S-Pen مدمج", "شاشة مذهلة بدقة QHD+"] },
-            { name: "iPhone 13 Pro Max", img: "6.png", desc: "الهاتف الأكثر اعتمادية ببطارية جبارة وشاشة تدعم سلاسة الحركة الاستثنائية.", specs: ["شاشة ProMotion 120Hz", "بطارية تدوم طويلاً جداً", "أداء قوي في الألعاب"] },
-            { name: "Xiaomi 14 Ultra", img: "7.png", desc: "وحش التصوير من شاومي بعدسات لايكا الألمانية، يقدم تجربة كاميرا احترافية حقيقية.", specs: ["عدسات Leica الاحترافية", "شحن خارق 90 واط", "شاشة AMOLED مذهلة"] },
-            { name: "iPhone 12 Pro Max", img: "8.png", desc: "التصميم المربع الأنيق الذي أعاد الكلاسيكية، مع دعم كامل لشبكات الجيل الخامس وتصوير HDR.", specs: ["دعم شبكات 5G", "تصميم فولاذي فخم", "تصوير فيديو Dolby Vision"] },
-            { name: "Samsung Z Fold 6", img: "9.png", desc: "مستقبل الهواتف المطوية، هاتف يتحول إلى تابلت بلمحة بصر لإنجاز أعمالك ومتابعة محتواك بمتعة.", specs: ["شاشة داخلية ضخمة قابلة للطي", "مقاومة الماء والغبار", "نظام تعدد مهام متطور"] },
-            { name: "iPhone 11 Pro Max", img: "10.png", desc: "الجهاز العملي والمستقر، يتميز بجودة تصوير متوازنة وشاشة OLED رائعة تناسب الاستخدام اليومي المكثف.", specs: ["نظام ثلاث كاميرات بدقة 12MP", "شاشة Super Retina XDR", "معالج A13 Bionic المستقر"] },
-            { name: "Honor Magic 6 Pro", img: "11.png", desc: "يتميز بأقوى حماية للشاشة وبطارية سيليكون كربون تدوم طويلاً حتى في أقسى الظروف.", specs: ["شاشة نانو كريستال ضد الكسر", "بطارية سيليكون 5600mAh", "تصوير رياضي فائق السرعة"] },
-            { name: "Samsung Z Flip 6", img: "12.png", desc: "الأناقة والتقنية في جيبك، هاتف مطوي جذاب وعملي جداً لمحبي التميز والحجم المدمج.", specs: ["تصميم مطوي جذاب ومدمج", "شاشة خارجية تفاعلية", "كاميرا مطورة بدقة 50MP"] },
-            { name: "Redmi Note 13 Pro+", img: "13.png", desc: "أفضل قيمة مقابل سعر، يقدم مواصفات الهواتف الرائدة مثل الشحن الخارق والكاميرا القوية.", specs: ["كاميرا بدقة 200MP", "شحن خارق 120 واط", "مقاومة الماء والغبار IP68"] },
-            { name: "HUAWEI Pura 70 Ultra", img: "14.png", desc: "ثورة في عالم الكاميرات مع عدسة متحركة ميكانيكية تقدم جودة صور تنافس الكاميرات الاحترافية.", specs: ["عدسة متحركة (Pop-out)", "تصوير ليلي مذهل", "تصميم خلفي من الجلد الفاخر"] },
-            { name: "Google Pixel 9 Pro", img: "15.png", desc: "أذكى هاتف في العالم بفضل معالجة جوجل المباشرة للذكاء الاصطناعي وتجربة أندرويد الخام.", specs: ["ذكاء اصطناعي Gemini مدمج", "أفضل معالجة صور في العالم", "تجربة أندرويد خام وسلسة"] }
+            { name: "iPhone 13 Pro Max", img: "6.png", desc: "الهاتف الأكثر اعتمادية ببطارية جبارة وشاشة تدعم سلاسة الحركة الاستثنائية.", specs: ["شاشة ProMotion 120Hz", "بطارية تدوم طويلاً جداً", "أداء قوي في الألعاب"] }
         ];
 
         const grid = document.getElementById('phoneGrid');
@@ -446,10 +317,10 @@
                     <div class="skeleton-loader" style="width:100%; aspect-ratio:1/1;">
                         <img src="${phone.img}" alt="${phone.name}" style="opacity:0; transition: opacity 0.5s;" 
                              onload="this.style.opacity='1'; this.parentElement.classList.remove('skeleton-loader')"
-                             onerror="this.src='https://via.placeholder.com/400x300?text=Phone+Image'; this.parentElement.classList.remove('skeleton-loader'); this.style.opacity='1'">
+                             onerror="this.src='logo.png'; this.parentElement.classList.remove('skeleton-loader'); this.style.opacity='1'">
                     </div>
                     <h3>${phone.name}</h3>
-                    <button class="btn-action open-modal-btn btn-animate" data-phone="${index}" style="border-radius:15px;">اكتشف</button>
+                    <button class="btn-action open-modal-btn btn-animate" data-phone="${index}" style="border-radius:15px; margin:10px;">اكتشف التفاصيل</button>
                 </div>
             `;
         });
@@ -480,47 +351,6 @@
 
         closeModalBtn.addEventListener('click', () => modal.classList.remove('open'));
         window.onclick = e => { if (e.target === modal) modal.classList.remove('open'); };
-
-        // --- محرك ذكاء بن جمال الآمن والنظيف ---
-        async function getGeminiResponse(userPrompt) {
-            try {
-                // الاتصال بـ Netlify Function بدلاً من جوجل مباشرة
-                const response = await fetch('/.netlify/functions/gemini', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: userPrompt })
-                });
-
-                if (!response.ok) throw new Error('Network response was not ok');
-
-                const data = await response.json();
-                return data.text; 
-
-            } catch (error) {
-                console.error('Error:', error);
-                return "<li>يا غالي، في مشكلة تقنية بسيطة.. جرب شوية ثانية</li>";
-            }
-        }
-
-        const aiBtn = document.getElementById('aiBtn');
-        const aiDescription = document.getElementById('aiDescription');
-        const aiResults = document.getElementById('aiResults');
-        const aiResultsList = document.getElementById('aiResultsList');
-
-        aiBtn.addEventListener('click', async () => {
-            const description = aiDescription.value.trim();
-            if (!description) return alert("فضلاً اكتب طلبك هنا لنتمكن من مساعدتك!");
-
-            aiBtn.classList.add('loading-ai');
-            aiResults.classList.add('active');
-            aiResultsList.innerHTML = "<li>لحظات يا غالي.. بنشوف لك أحسن العروض..</li>";
-
-            const aiResponse = await getGeminiResponse(description);
-            aiResultsList.innerHTML = aiResponse;
-            aiBtn.classList.remove('loading-ai');
-
-            window.scrollTo({ top: aiResults.offsetTop - 100, behavior: 'smooth' });
-        });
     </script>
 </body>
 </html>
